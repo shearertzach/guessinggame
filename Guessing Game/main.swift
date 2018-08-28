@@ -18,11 +18,14 @@ repeat {
     
     repeat {
         
-        let number = readLine()!
+        var number = readLine()!
         
         if let number = Int(number) {
             guessedNumber = number
-        } else {
+        } else if number == "Cheat" {
+            print(randomNumber)
+        }
+        else {
             print("Enter a number please")
         }
     } while guessedNumber == nil
@@ -39,7 +42,7 @@ repeat {
         if answer == "Y" || answer == "y" {
             print("Guess a number 1-100.")
             randomNumber = Int(arc4random_uniform(99)) + 1
-             numberOfGuesses = 5
+            numberOfGuesses = 5
         } else if answer == "N" || answer == "n" {
             print("Okay, fair enough.")
         }
@@ -53,7 +56,7 @@ repeat {
     }
     
     if numberOfGuesses == 0 {
-        print("You lose")
+        print("You lose. The correct number was \(randomNumber)")
         print("Do you want to try again? Y/N")
         let answer = readLine()!
         if answer == "Y" || answer == "y" {
